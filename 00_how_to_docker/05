@@ -1,0 +1,5 @@
+# 5. Launch the hello-world container, and make sure that it prints its welcome message, then leaves it.
+
+docker run hello-world
+
+# this runs the image from our machine
