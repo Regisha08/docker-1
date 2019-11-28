@@ -3,7 +3,8 @@
 # to fix all four environment variables with one command, and you are not allowed
 # to use your shell’s builtin to set these variables by hand.
 
+
+#first run "docker-machine env Char" to configure your shell
 eval "$(docker-machine env Char)"
 
 # env (command) shows all the variables of my computer
-# docker-machine env Char

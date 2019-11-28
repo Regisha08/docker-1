@@ -2,6 +2,9 @@
 # its 80 port should be bound to the 8081 port of the virtual machine and it should
 # be able to explore the database stored in the spawning-pool container.
 
-docker run  -d --name roach-warden -p 8081:80 --link spawning-pool:database phpmyadmin/phpmyadmin
+docker run -d --name roach-warden \
+-p 8081:80 \
+--link spawning-pool:database phpmyadmin/phpmyadmin
 
 #[Name of container]:database phpmyadmin/phpmyadmin - give permision to explore the database
+#type the ip + :8081 as url in browser (ex: http://192.168.99.102:8081/)

@@ -4,9 +4,11 @@
 # the container directly creates a database named zerglings, and that the container
 # itself is named spawning-pool.
 
-#docker pull mysql
-
-docker run -d --name spawning-pool --restart=on-failure:5 --env MYSQL_ROOT_PASSWORD=Kerrigan --env MYSQL_DATABASE=zerglings --volume hatchery:/var/lib/mysql mysql --default-authentication-plugin=mysql_native_password
+docker pull mysql && \
+docker run -d --name spawning-pool --restart=on-failure:5 \
+--env MYSQL_ROOT_PASSWORD=Kerrigan --env MYSQL_DATABASE=zerglings \
+--volume hatchery:/var/lib/mysql mysql \
+--default-authentication-plugin=mysql_native_password
 
 #give the path to get inside of hatchery volume with the -v flag
 #and then after the volume name(hatchery:) specify the path

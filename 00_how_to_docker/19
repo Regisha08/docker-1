@@ -11,15 +11,27 @@
 #I alredy have a Python image on the computer
 #Just name the container as Abathur
 
-docker run --name Abathur -v ~/:/root -p 3000:3000 -dit python:2-slim
-docker exec Abathur pip install Flask
 
-#if above doest work then remove the container by "docker rm Abathur"
-#and then use -it -d to the first command "docker run -it -d --name Abathur -p 3000:3000 -v ~/:/root python:2-slim"
+
+docker run -d -it -p 3000:3000 --name Abathur --volume ~/:/root python:2-slim && \
+docker exec Abathur pip install Flask && \
+docker exec Abathur sh -c "echo 'from flask import Flask\napp = \
+Flask(__name__)\n@app.route(\"/\")\ndef hello_world():\n\treturn \"<h1>Hello, World</h1>\"' > ~/app.py" && \
+docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+
+
+
+#if above doest work then remove the container by "docker stop Abathur && docker rm Abathur"
 
 #exec - Run a command in a running container Abathur
 #we are inside of the Abathur cnontainer and we need to install Flask by using command pip install
 
-echo 'from flask import Flask\napp = Flask(__name__)\n@app.route("/")\ndef hello_world():\n\treturn "<h1>Hello, World!</h1>"' > ~/app.py
+#by using next command we create a file hello.py by using "echo 'here_shuld_be_python_the_code_inside_of_the_file' > file_name.py"
 
-docker exec -e FLASK_APP=/root/app.py Abathur flask run --host=0.0.0.0 --port 3000
+
+
+#to change the host get the ip by using "docker inspect -f "{{.NetworkSettings.IPAddress}}" Abathur"
+#to run the Flask and the Abathour container with hello.py file:
+#172.17.0.3 its gonna be the ip
+
+#type the ip + :8081 as url in browser (ex: http://192.168.99.102:3000/)

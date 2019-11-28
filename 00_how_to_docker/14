@@ -5,13 +5,12 @@
 # IP address of the virtual machine as a URL.
 # Congratulations, you just deployed a functional Wordpress website in two commands!
 
-# docker pull wordpress
-
+docker pull wordpress && \
 docker run -d -p 8080:80 --name lair --link spawning-pool wordpress
 
 #--link - to link container to contaner(database)
 #How to check if all th e above works:
-# docker-machine ip docker
+# docker-machine ip Char
 #(get the ip adrress)
 #go to browser
-#type the ip + :8080 as url in browser (ex: http://192.168.99.101:8080/)
+#type the ip + :8080 as url in browser (ex: http://192.168.99.102:8080/)
