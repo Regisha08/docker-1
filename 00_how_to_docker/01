@@ -8,3 +8,4 @@
 docker-machine create --driver=virtualbox Char
 
 # We created a container named Char by using doker-machine and we attached it to virtual box
+# to check "docker-machine ls "
