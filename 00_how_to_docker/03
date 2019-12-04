@@ -9,4 +9,5 @@
 docker-machine env Char && \
 eval "$(docker-machine env Char)"
 
+#source ~/.zshrc
 # env (command) shows all the variables of my computer
