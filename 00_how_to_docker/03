@@ -5,6 +5,8 @@
 
 
 #first run "docker-machine env Char" to configure your shell
+
+docker-machine env Char && \
 eval "$(docker-machine env Char)"
 
 # env (command) shows all the variables of my computer

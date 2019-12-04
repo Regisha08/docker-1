@@ -1,0 +1,10 @@
+# 32. Force quit and delete all the containers (whatever their status), in one command.
+
+#docker ps -a -q - lists all the containers ID
+#-a - all
+#-q - displays the id only
+
+docker rm -f $(docker ps -a -q)
+
+#rm - remove
+#-f - force
